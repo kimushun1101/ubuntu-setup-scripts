@@ -4,7 +4,7 @@ Setup scripts for Ubuntu 20.04
 
 ## Contents
 
-## Manually setup
+### Manually setup
 
 Import keymap.txt from Mozc settings.  
 The input type (Japanese or English) can be switched by Henkan or Muhenkan key.  
