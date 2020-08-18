@@ -32,7 +32,7 @@ To edit this file for git global setting.
 Replace user name and the email address infomation for you.
 Then, run it.
 
-### 3_install_ros.sh
+### 3_install_ros2.sh
 
 Install ros2 environment.
 (As of August 17, 2020)
