@@ -13,5 +13,6 @@ fi
 source ~/.bashrc
 cat ~/.ssh/id_rsa.pub | pbcopy
 xdg-open https://github.com/settings/ssh
-read -p "Upload public key, then HIT ENTER: \n you can use 'cat ~/.ssh/id_rsa.pub | pbcopy' " continue
+echo "Upload public key, then HIT ENTER:"
+read -p  "you can use 'cat ~/.ssh/id_rsa.pub | pbcopy' " continue
 ssh -T git@github.com
