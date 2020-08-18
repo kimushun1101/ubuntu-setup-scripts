@@ -20,7 +20,7 @@ If ".setup" directory is not appeared, press Ctrl-h.
 
 - Folder names is in English.
 - Install vim, terminator, docker, xcape and xsel.
-- Navigate to GUI installer for Google Chrome, VS Code, and Slack.
+- Navigate to GUI installers for Google Chrome, VS Code, and Slack.
 - Paste symbolic links for vim, bash and keyboard setting.
 - Make a vimbackup directory.
 - Caps Lock Key becomes Ctrl key.
@@ -32,7 +32,7 @@ To edit this file for git global setting.
 Replace user name and the email address infomation for you.
 Then, run it.
 
-### 3_install_ros.sh
+### 3_install_ros2.sh
 
 Install ros2 environment.
 (As of August 17, 2020)
