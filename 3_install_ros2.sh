@@ -27,7 +27,8 @@ sudo apt update && sudo apt install -y \
   python3-rosdep \
   python3-setuptools \
   python3-vcstool \
-  wget
+  wget \
+  python3-testresources
 # install some pip packages needed for testing
 python3 -m pip install -U \
   argcomplete \
