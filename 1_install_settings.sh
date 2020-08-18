@@ -39,7 +39,7 @@ gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-seconds true
 sudo timedatectl set-local-rtc true
 
-mv ~/setup-ubuntu18 ~/.setup
+mv ~/setup-ubuntu20 ~/.setup
 ln -s .setup/vimrc ~/.vimrc
 ln -s .setup/gvimrc ~/.gvimrc
 ln -s .setup/bash_aliases ~/.bash_aliases
