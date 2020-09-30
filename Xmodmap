@@ -2,10 +2,12 @@ clear Lock
 remove Control = Mode_switch
 keycode 255 = Muhenkan
 keycode 102 = Mode_switch
+keycode 101 = Escape
 keycode 43 = h H Left Left
 keycode 44 = j J Down Down
 keycode 45 = k K Up Up
 keycode 46 = l L Right Right
-keycode 46 = l L Right Right
+keycode 29 = y Y Home Home
+keycode 32 = o O End End
 keycode 57 = n N BackSpace BackSpace
 keycode 58 = m M Delete Delete
