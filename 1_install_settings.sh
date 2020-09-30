@@ -46,4 +46,5 @@ ln -s .setup/bash_aliases ~/.bash_aliases
 ln -s .setup/Xmodmap ~/.Xmodmap
 
 echo "xmodmap ~/.Xmodmap" >> ~/.bashrc
+echo "clear" >> ~/.bashrc
 source ~/.bashrc
