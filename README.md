@@ -4,19 +4,19 @@ Setup scripts for Ubuntu 20.04
 
 ## Contents
 
-### Manually setup
+### 1 Manually setup
 
 Import keymap.txt from Mozc settings.  
 The input type (Japanese or English) can be switched by Henkan or Muhenkan key.  
 If you miss the Mozc setting and run "1_install_settings.sh", the file "keymap.txt" exists in ~/.setup/keymap.txt.
 If ".setup" directory is not appeared, press Ctrl-h.
 
-### 0_apt_settings.sh
+### 2_apt_settings.sh
 
 - apt server is setup.
 - update, upgrade, and autoremove.
 
-### 1_install_settings.sh
+### 3_install_settings.sh
 
 - Folder names is in English.
 - Install vim, terminator, docker, and xsel.
@@ -26,13 +26,13 @@ If ".setup" directory is not appeared, press Ctrl-h.
 - Caps Lock Key becomes Ctrl key.
 - Shows date and seconds on the clock.
 
-### 2_set_git_config.sh
+### 4_set_git_config.sh
 
 To edit this file for git global setting.
 Replace user name and the email address information for you.
 Then, run it.
 
-### 3_install_ros2.sh
+### 5_install_ros2.sh
 
 Install ros2 environment.
 (As of August 17, 2020)
