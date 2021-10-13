@@ -26,14 +26,7 @@ sudo apt install -y terminator
 mkdir -p ~/.config/terminator
 cp -f terminator_config ~/.config/terminator/config
 
-# install xcape
-sudo apt install -y gcc make pkg-config libx11-dev libxtst-dev libxi-dev
-git clone https://github.com/alols/xcape.git
-cd xcape/
-make
-sudo make install
-echo "/usr/bin/xcape -e '#102=Muhenkan'" >> ~/.bashrc
-
+# gsettings
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-seconds true
@@ -43,8 +36,8 @@ mv ~/setup-ubuntu20 ~/.setup
 ln -s .setup/vimrc ~/.vimrc
 ln -s .setup/gvimrc ~/.gvimrc
 ln -s .setup/bash_aliases ~/.bash_aliases
-ln -s .setup/Xmodmap ~/.Xmodmap
+ln -s .setup/xkb ~/.xkb
 
-echo "xmodmap ~/.Xmodmap" >> ~/.bashrc
+echo "xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY" >> ~/.bashrc
 echo "clear" >> ~/.bashrc
 source ~/.bashrc

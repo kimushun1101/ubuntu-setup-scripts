@@ -19,7 +19,7 @@ If ".setup" directory is not appeared, press Ctrl-h.
 ### 1_install_settings.sh
 
 - Folder names is in English.
-- Install vim, terminator, docker, xcape and xsel.
+- Install vim, terminator, docker, and xsel.
 - Navigate to GUI installers for Google Chrome, VS Code, and Slack.
 - Paste symbolic links for vim, bash and keyboard setting.
 - Make a vimbackup directory.
@@ -29,7 +29,7 @@ If ".setup" directory is not appeared, press Ctrl-h.
 ### 2_set_git_config.sh
 
 To edit this file for git global setting.
-Replace user name and the email address infomation for you.
+Replace user name and the email address information for you.
 Then, run it.
 
 ### 3_install_ros2.sh
