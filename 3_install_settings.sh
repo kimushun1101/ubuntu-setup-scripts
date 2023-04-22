@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 cd `dirname $0`
 
 LANG=C xdg-user-dirs-gtk-update
+/usr/lib/mozc/mozc_tool --mode=config_dialog
 
 APT_INSTALL=0
 command -v curl  > /dev/null 2>&1 || APT_INSTALL=1
@@ -33,24 +34,25 @@ if ! command -v docker &> /dev/null; then
   rm -f get-docker.sh
 fi
 
-# Terminator
+# config files
+mkdir -p ~/.vimbackup
+ln -sf $(pwd)/vimrc ~/.vimrc
+ln -sf $(pwd)/bash_aliases ~/.bash_aliases
+ln -sf $(pwd)/xkb ~/.xkb
 mkdir -p ~/.config/terminator
-cp -f terminator_config ~/.config/terminator/config
+ln -sf $(pwd)/terminator_config ~/.config/terminator/config
 
 # time setting
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 # gsettings set org.gnome.desktop.interface clock-show-seconds true
-sudo timedatectl set-local-rtc true
-
-# config files
-mkdir ~/.vimbackup
-ln -s $(pwd)/vimrc ~/.vimrc
-ln -s $(pwd)/bash_aliases ~/.bash_aliases
-ln -s $(pwd)/xkb ~/.xkb
+timedatectl set-local-rtc true
 
 # keyboard settings
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
-echo "xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY" >> ~/.bashrc
-echo "clear" >> ~/.bashrc
-source ~/.bashrc
+bashrc_path="$HOME/.bashrc"
+xkb_command='xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY 2> /dev/null'
+if ! grep -q "$xkb_command" "$bashrc_path"; then
+  echo "$xkb_command" >> "$bashrc_path"
+fi
+source $bashrc_path

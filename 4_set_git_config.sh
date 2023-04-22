@@ -15,18 +15,22 @@ USER_EMAIL="kimushun1101@gmail.com"
 echo "user.name  : $USER_NAME"
 echo "user.email : $USER_EMAIL"
 while true; do
-  read -p "Do you set at the above user.name and user.email? (y/N): " yn
-  case "$yn" in 
-    [yY]*) break ;;
-    [Nn]*)
+  read -p "Do you set at the above user.name and user.email? (y:Yes/n:No/c:Change): " ync
+  case "$ync" in 
+    [y]*)
+      git config --global user.name "$USER_NAME"
+      git config --global user.email "$USER_EMAIL"
+      git config --global core.editor vim.tiny
+      break ;;
+    [n]*)
+      break ;;
+    [c]*)
+      echo "---"
       read -p "user.name  : " USER_NAME
       read -p "user.email : " USER_EMAIL;;
     *);;
   esac
 done
-git config --global user.name "$USER_NAME"
-git config --global user.email "$USER_EMAIL"
-git config --global core.editor vim.tiny
 
 # set ssh key
 if [ ! -e ~/.ssh/id_ed25519 ]; then

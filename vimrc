@@ -1,7 +1,7 @@
 "Display
-colorscheme elflord
+"colorscheme elflord
 set background=dark
-syntax on					"シンタックスカラーリングを設定する
+"syntax on					"シンタックスカラーリングを設定する
 set number				"行番号を表示する
 set title					"編集中のファイル名を表示する
 set showcmd				"入力中のコマンドを表示する
