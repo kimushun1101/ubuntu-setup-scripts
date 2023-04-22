@@ -26,7 +26,7 @@ while true; do
 done
 git config --global user.name "$USER_NAME"
 git config --global user.email "$USER_EMAIL"
-git config --global core.editor vi
+git config --global core.editor vim.tiny
 
 # set ssh key
 if [ ! -e ~/.ssh/id_ed25519 ]; then
