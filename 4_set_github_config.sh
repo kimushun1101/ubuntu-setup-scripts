@@ -17,14 +17,14 @@ echo "user.email : $USER_EMAIL"
 while true; do
   read -p "Do you set at the above user.name and user.email? (y:Yes/n:No/c:Change): " ync
   case "$ync" in 
-    [y]*)
+    [yY]*)
       git config --global user.name "$USER_NAME"
       git config --global user.email "$USER_EMAIL"
       git config --global core.editor vim.tiny
       break ;;
-    [n]*)
+    [nN]*)
       break ;;
-    [c]*)
+    [cC]*)
       echo "---"
       read -p "user.name  : " USER_NAME
       read -p "user.email : " USER_EMAIL;;
