@@ -1,18 +1,50 @@
-#!/bin/sh
-read -p "Did you change user.name and user.email? (y/N): " yn
-case "$yn" in [yY]*) ;; *) echo "abort." ; exit ;; esac
+#!/bin/bash
 
-git config --global user.name "Shunsuke Kimura"
-git config --global user.email "kimushun1101@gmail.com"
-
-if [ ! -e ~/.ssh/id_rsa ]; then
-  cd ~/.ssh
-  ssh-keygen -t rsa
+# Software install
+APT_INSTALL=0
+command -v git  > /dev/null 2>&1 || APT_INSTALL=1
+command -v xsel > /dev/null 2>&1 || APT_INSTALL=1
+if [ $APT_INSTALL -eq 1 ]; then
+  sudo apt update
+  sudo apt install git xsel -y
 fi
 
-source ~/.bashrc
-cat ~/.ssh/id_rsa.pub | pbcopy
-xdg-open https://github.com/settings/ssh
-echo "Upload public key, then HIT ENTER:"
-read -p  "you can use 'cat ~/.ssh/id_rsa.pub | pbcopy' " continue
-ssh -T git@github.com
+# set user.name and user.email
+USER_NAME="Shunsuke Kimura"
+USER_EMAIL="kimushun1101@gmail.com"
+echo "user.name  : $USER_NAME"
+echo "user.email : $USER_EMAIL"
+while true; do
+  read -p "Do you set at the above user.name and user.email? (y/N): " yn
+  case "$yn" in 
+    [yY]*) break ;;
+    [Nn]*)
+      read -p "user.name  : " USER_NAME
+      read -p "user.email : " USER_EMAIL;;
+    *);;
+  esac
+done
+git config --global user.name "$USER_NAME"
+git config --global user.email "$USER_EMAIL"
+
+# set ssh key
+if [ ! -e ~/.ssh/id_ed25519 ]; then
+  cd ~/.ssh
+  ssh-keygen -t ed25519
+fi
+
+while true; do
+  if ssh -T git@github.com 2>&1 | grep -Eq "You.*successfully authenticated"; then
+    break
+  else
+    ssh -T git@github.com
+    echo "Check your ssh key settings."
+    echo "Open the GitHub SSH settings."
+    xdg-open https://github.com/settings/ssh > /dev/null 2>&1
+    echo "Copy id_ed25519.pub to your clipboard."
+    cat ~/.ssh/id_ed25519.pub | xsel --clipboard --input
+    read -p  "Upload public key, then HIT ENTER:" continue
+  fi
+done
+
+echo "GitHub configuration is complete!"
