@@ -39,3 +39,4 @@ Git とGitHub を使うための準備をする。
 ### 5_delete_preference.bash
 
 2_set_preference.bash によって作られたファイルを削除する。
+設定を復活させたい場合には2_set_preference.bash を再実行すればよい。
