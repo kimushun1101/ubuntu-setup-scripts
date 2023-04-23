@@ -19,3 +19,5 @@ cd `dirname $0`
 ./2_set_preference.bash
 ./3_install_software.bash
 ./4_set_github_config.bash
+
+echo -e "\033[32mAll scripts have been completed!\033[m"

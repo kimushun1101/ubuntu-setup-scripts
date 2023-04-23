@@ -25,4 +25,4 @@ rm -rf ~/.vimrc
 rm -rf ~/.bash_aliases
 rm -rf ~/.config/terminator
 
-echo "Config was deleted!"
+echo -e "\033[32mConfig was deleted.\033[m"

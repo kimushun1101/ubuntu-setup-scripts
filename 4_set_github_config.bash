@@ -66,4 +66,5 @@ while true; do
   fi
 done
 
-echo "GitHub configuration is complete!"
+echo -e "\033[32mGitHub configuration is complete!\033[m"
+

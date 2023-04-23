@@ -45,3 +45,5 @@ if ! command -v docker &> /dev/null; then
   sudo usermod -aG docker $USER
   rm -f get-docker.sh
 fi
+
+echo -e "\033[32mSoftware installation is complete!\033[m"

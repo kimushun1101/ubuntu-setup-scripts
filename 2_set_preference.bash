@@ -60,4 +60,4 @@ while true; do
   esac
 done
 
-echo "Preference setting is complete!"
+echo -e "\033[32mPreference setting is complete!\033[m"
