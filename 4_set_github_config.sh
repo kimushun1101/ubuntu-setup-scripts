@@ -46,7 +46,7 @@ while true; do
   esac
 done
 
-# set ssh key
+# generate ssh key
 if [ ! -e ~/.ssh/id_ed25519 ]; then
   cd ~/.ssh
   ssh-keygen -t ed25519

@@ -1,38 +1,41 @@
-# setup-ubuntu20
+[日本語](/README.md) | [English](/README_en.md)
 
-Setup scripts for Ubuntu 20.04
+# Ubuntu-Desktop setup scripts
+
+Ubuntu-Desktop に対するセットアップスクリプト
 
 ## Contents
 
-### 1 Manually setup
+### 1_run_all_scripts.bash
 
-Import keymap.txt from Mozc settings.  
-The input type (Japanese or English) can be switched by Henkan or Muhenkan key.  
-If you miss the Mozc setting and run "1_install_settings.sh", the file "keymap.txt" exists in ~/.setup/keymap.txt.
-If ".setup" directory is not appeared, press Ctrl-h.
+5_delete_preference.bash 以外のすべてのスクリプトを実行する。
 
-### 2_apt_settings.sh
+### 2_set_preference.bash
 
-- apt server is setup.
-- update, upgrade, and autoremove.
+以下の設定を行う。
+- ホームディレクトリのディレクトリ名を英語に変更
+- vimbackup ディレクトリを作成
+- config ディレクトリにあるファイルのシンボリックリンクを各所に作成
+- 時計に日付と曜日を表示
+- Windows とデュアルブートしたときに時計がずれないように設定
+- Caps Lock キーをCtrl キーに変更
+- xkb を使用して無変換キー+hjkl などでカーソル移動ができるように設定
+- Mozc のキー設定を変更して、変換キーや無変換キーで日本語入力切り替えができるように設定
 
-### 3_install_settings.sh
+### 3_install_software.bash
 
-- Folder names is in English.
-- Install vim, terminator, docker, and xsel.
-- Navigate to GUI installers for Google Chrome, VS Code, and Slack.
-- Paste symbolic links for vim, bash and keyboard setting.
-- Make a vimbackup directory.
-- Caps Lock Key becomes Ctrl key.
-- Shows date and seconds on the clock.
+terminatorとGoogle Chrome、VS Code、Docker をインストールする。
+不要なソフトはご自身でコメントアウトしてください。
 
-### 4_set_git_config.sh
+### 4_set_github_config.bash
 
-To edit this file for git global setting.
-Replace user name and the email address information for you.
-Then, run it.
+Git とGitHub を使うための準備をする。
+- Git をインストール
+- Git のglobal config を設定
+- ed25519 でSSH キーを生成
+- GitHub のSSH setting のページを開き、SSH キーの登録を促す
+- GitHub への接続を確認
 
-### 5_install_ros2.sh
+### 5_delete_preference.bash
 
-Install ros2 environment.
-(As of August 17, 2020)
+2_set_preference.bash によって作られたファイルを削除する。
