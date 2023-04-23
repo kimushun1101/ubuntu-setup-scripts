@@ -24,7 +24,7 @@ Ubuntu-Desktop に対するセットアップスクリプト
 
 ### 3_install_software.bash
 
-terminatorとGoogle Chrome、VS Code、Docker をインストールする。
+GNOME TerminatorとGoogle Chrome、VS Code、Docker をインストールする。
 不要なソフトはご自身でコメントアウトしてください。
 
 ### 4_set_github_config.bash

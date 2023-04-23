@@ -24,7 +24,7 @@ This script set the following preferences.
 
 ### 3_install_software.bash
 
-This script installs terminator, Google Chrome, VS Code, and Docker.
+This script installs GNOME Terminator, Google Chrome, VS Code, and Docker.
 
 ### 4_set_github_config.bash
 
