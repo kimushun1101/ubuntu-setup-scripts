@@ -38,4 +38,4 @@ This script prepares you to use Git and GitHub.
 ### 5_delete_preference.bash
 
 This script delete the file made by 2_set_preference.bash.
-Re-run 2_set_preference.bash if you wish to restore the settings.
+If you wish to reconfigure, rerun 2_set_preference.bash.
