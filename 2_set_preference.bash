@@ -8,7 +8,6 @@ LANG=C xdg-user-dirs-gtk-update
 mkdir -p ~/.vimbackup
 ln -sf $(pwd)/config/vimrc ~/.vimrc
 ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
-ln -sf $(pwd)/config/xkb ~/.xkb
 mkdir -p ~/.config/terminator
 ln -sf $(pwd)/config/terminator_config ~/.config/terminator/config
 
@@ -20,8 +19,12 @@ timedatectl set-local-rtc true
 
 # keyboard settings
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+xkb_command="xkbcomp -I$(pwd)/config/xkb $(pwd)/config/xkb/keymap/mykbd $DISPLAY 2> /dev/null"
+profile_path="$HOME/.profile"
+if ! grep -q "$xkb_command" "$profile_path"; then
+  echo "$xkb_command" >> "$profile_path"
+fi
 bashrc_path="$HOME/.bashrc"
-xkb_command='xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY 2> /dev/null'
 if ! grep -q "$xkb_command" "$bashrc_path"; then
   echo "$xkb_command" >> "$bashrc_path"
 fi

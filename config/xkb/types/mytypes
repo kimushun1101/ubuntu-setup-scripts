@@ -3,7 +3,12 @@ xkb_types "muhenkan" {
     modifiers = Shift+Mod5;
     map[Shift] = Level2;
     map[Mod5] = Level3;
-    map[Shift+Mod5] = Level3;
+    map[Mod5+Control] = Level3;
+    map[Mod5+Shift] = Level3;
+    map[Mod5+Shift+Control] = Level3;
+    preserve[Mod5+Control] = Control;
+    preserve[Mod5+Shift] = Shift;
+    preserve[Mod5+Shift+Control] = Shift+Control;
     level_name[Level1] = "Base";
     level_name[Level2] = "Shift";
     level_name[Level3] = "Muhenkan";
