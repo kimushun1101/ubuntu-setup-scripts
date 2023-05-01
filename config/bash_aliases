@@ -1,8 +1,8 @@
-cdls ()
+cd_and_ls ()
 {
     \cd "$@" && ls
 }
-alias cd="cdls"
+alias cd="cd_and_ls"
 alias x="exit"
 alias open="xdg-open"
 alias vi="vim.tiny"
