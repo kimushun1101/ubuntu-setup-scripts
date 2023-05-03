@@ -16,12 +16,12 @@
 
 cd `dirname $0`
 
-APT_INSTALL=0
-command -v curl  > /dev/null 2>&1 || APT_INSTALL=1
-command -v terminator > /dev/null 2>&1 || APT_INSTALL=1
-if [ $APT_INSTALL -eq 1 ]; then
+# Terminator
+if ! command -v terminator &> /dev/null; then
   sudo apt update
-  sudo apt install -y curl terminator
+  sudo apt install -y terminator
+  mkdir -p ~/.config/terminator
+  ln -sf $(pwd)/config/terminator_config ~/.config/terminator/config
 fi
 
 # Google Chrome
@@ -40,10 +40,24 @@ fi
 
 # Docker
 if ! command -v docker &> /dev/null; then
+  if ! command -v curl &> /dev/null; then
+    sudo apt update
+    sudo apt install -y curl
+  fi
   curl -fsSL https://get.docker.com -o get-docker.sh
   sudo sh get-docker.sh
   sudo usermod -aG docker $USER
   rm -f get-docker.sh
+fi
+
+# Ulauncher
+if ! command -v ulaunder &> /dev/null; then
+  sudo add-apt-repository ppa:agornostal/ulauncher
+  sudo apt update
+  sudo apt install ulauncher xdotool
+  gnome-control-center keyboard &
+  echo "Optional : set ulauncher-toggle at Ctrl-Space in keyboard-shortcuts"
+  ln -sf $(pwd)/config/ulauncher ~/.config/ulauncher
 fi
 
 echo -e "\033[32mSoftware installation is complete!\033[m"

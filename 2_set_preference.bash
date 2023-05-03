@@ -23,8 +23,6 @@ LANG=C xdg-user-dirs-gtk-update
 mkdir -p ~/.vimbackup
 ln -sf $(pwd)/config/vimrc ~/.vimrc
 ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
-mkdir -p ~/.config/terminator
-ln -sf $(pwd)/config/terminator_config ~/.config/terminator/config
 
 # time setting
 gsettings set org.gnome.desktop.interface clock-show-date true

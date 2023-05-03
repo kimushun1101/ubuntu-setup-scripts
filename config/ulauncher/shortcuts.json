@@ -1,0 +1,52 @@
+{
+    "97e4b652-67e7-4572-accd-8cfdb78925ae": {
+        "id": "97e4b652-67e7-4572-accd-8cfdb78925ae",
+        "name": "Google Search",
+        "keyword": "g",
+        "cmd": "https://google.com/search?q=%s",
+        "icon": "/usr/share/ulauncher/media/google-search-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1682896640.4413493
+    },
+    "1225c4de-8f72-4bd8-bd7a-316f334dbfbe": {
+        "id": "1225c4de-8f72-4bd8-bd7a-316f334dbfbe",
+        "name": "Weblio",
+        "keyword": "q",
+        "cmd": "https://ejje.weblio.jp/content/%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1682906863.8402383
+    },
+    "012b6ca3-a2ae-4aa9-83aa-9d998966ef2d": {
+        "id": "012b6ca3-a2ae-4aa9-83aa-9d998966ef2d",
+        "name": "DeepL Translator",
+        "keyword": "t",
+        "cmd": "https://www.deepl.com/translator#en/ja/%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1683037569.5344489
+    },
+    "091e4b2a-ef5c-44ba-aedf-69b109502621": {
+        "id": "091e4b2a-ef5c-44ba-aedf-69b109502621",
+        "name": "\u985e\u8a9e\u8f9e\u5178",
+        "keyword": "r",
+        "cmd": "https://thesaurus.weblio.jp/content/%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1683037684.7128391
+    },
+    "e12b42fc-4b15-45ac-95b1-962f84ca70ac": {
+        "id": "e12b42fc-4b15-45ac-95b1-962f84ca70ac",
+        "name": "Longman English Dictionary",
+        "keyword": "e",
+        "cmd": "https://www.ldoceonline.com/dictionary/%s",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1683037836.2057338
+    }
+}
