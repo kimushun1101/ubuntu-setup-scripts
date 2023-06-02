@@ -18,10 +18,10 @@
       type = Window
       parent = ""
       order = 0
-      position = 72:27
+      position = 0:0
       maximised = True
       fullscreen = False
-      size = 1848, 1016
+      size = 1846, 1016
       title = terminator
       last_active_term = bbd34449-e467-4c75-9e89-8e11699603f7
       last_active_window = True
@@ -29,30 +29,30 @@
       type = HPaned
       parent = child0
       order = 0
-      position = 922
-      ratio = 0.5002712967986978
-    [[[child2]]]
-      type = VPaned
-      parent = child1
-      order = 0
-      position = 506
-      ratio = 0.5004945598417408
-    [[[terminal3]]]
+      position = 921
+      ratio = 0.5002715915263444
+    [[[terminal2]]]
       type = Terminal
-      parent = child2
+      parent = child1
       order = 0
       profile = default
       uuid = bbd34449-e467-4c75-9e89-8e11699603f7
-    [[[terminal4]]]
-      type = Terminal
-      parent = child2
-      order = 1
-      profile = default
-      uuid = 7238d5bf-22eb-468b-93f2-905d80e945fe
-    [[[terminal5]]]
-      type = Terminal
+    [[[child3]]]
+      type = VPaned
       parent = child1
       order = 1
+      position = 506
+      ratio = 0.5004945598417408
+    [[[terminal4]]]
+      type = Terminal
+      parent = child3
+      order = 0
       profile = default
       uuid = 4a310ac0-b8b2-4bf2-99cd-905cf09b0217
+    [[[terminal5]]]
+      type = Terminal
+      parent = child3
+      order = 1
+      profile = default
+      uuid = 6d0525d4-0692-4dd7-b502-1a552102e1c3
 [plugins]

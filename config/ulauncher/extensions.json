@@ -2,14 +2,14 @@
     "com.github.trepichio.ulauncher-window-switcher": {
         "id": "com.github.trepichio.ulauncher-window-switcher",
         "url": "https://github.com/trepichio/ulauncher-window-switcher",
-        "updated_at": "2023-05-01T10:40:54.748352",
+        "updated_at": "2023-06-02T13:37:31.377017",
         "last_commit": "5d4b221c5d59f991d3b934f36ee7c1d6bbe419c4",
         "last_commit_time": "2022-07-17T08:25:36"
     },
     "com.github.melianmiko.ulauncher-nmcli": {
         "id": "com.github.melianmiko.ulauncher-nmcli",
         "url": "https://github.com/melianmiko/ulauncher-nmcli",
-        "updated_at": "2023-05-01T10:56:03.580846",
+        "updated_at": "2023-06-02T13:37:32.626362",
         "last_commit": "fe967c947748616df602c9d022fec6d68a6b2cf2",
         "last_commit_time": "2022-05-01T12:20:38"
     }
