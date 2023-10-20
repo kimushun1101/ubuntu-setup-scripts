@@ -33,7 +33,7 @@ fi
 
 # VS Code
 if ! command -v code &> /dev/null; then
-  curl -L curl -L http://go.microsoft.com/fwlink/?LinkID=760868 -o code.deb
+  curl -L http://go.microsoft.com/fwlink/?LinkID=760868 -o code.deb
   sudo apt install ./code.deb
   rm -f code.deb
 fi
