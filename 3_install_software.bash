@@ -51,13 +51,14 @@ if ! command -v docker &> /dev/null; then
 fi
 
 # Ulauncher
-if ! command -v ulaunder &> /dev/null; then
-  sudo add-apt-repository ppa:agornostal/ulauncher
-  sudo apt update
-  sudo apt install ulauncher xdotool
-  gnome-control-center keyboard &
-  echo "Optional : set ulauncher-toggle at Ctrl-Space in keyboard-shortcuts"
-  ln -sf $(pwd)/config/ulauncher ~/.config/ulauncher
-fi
+# 
+# if ! command -v ulaunder &> /dev/null; then
+#   sudo add-apt-repository ppa:agornostal/ulauncher
+#   sudo apt update
+#   sudo apt install ulauncher xdotool
+#   gnome-control-center keyboard &
+#   echo "Optional : set ulauncher-toggle at Ctrl-Space in keyboard-shortcuts"
+#   ln -sf $(pwd)/config/ulauncher ~/.config/ulauncher
+# fi
 
 echo -e "\033[32mSoftware installation is complete!\033[m"
