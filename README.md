@@ -4,6 +4,14 @@
 
 Ubuntu-Desktop に対するセットアップスクリプト
 
+## Install
+
+```
+git clone git@github.com:kimushun1101/ubuntu-setup-scripts.git ~/.ubuntu-setup-scripts
+# ~/.ubuntu-setup-scripts/1_run_all_scripts.bash # for Desktop
+# ~/.ubuntu-setup-scripts/6_setup_server.bash # for Server
+```
+
 ## Contents
 
 ### 1_run_all_scripts.bash
