@@ -66,5 +66,6 @@ while true; do
   fi
 done
 
-echo -e "\033[32mGitHub configuration is complete!\033[m"
+git config --global core.editor vim.tiny
+echo -e "\033[32mGit configuration is complete!\033[m"
 
