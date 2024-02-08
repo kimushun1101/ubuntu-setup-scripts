@@ -16,6 +16,11 @@
 
 cd `dirname $0`
 
+if ! command -v vim &> /dev/null; then
+  sudo apt update
+  sudo apt install -y vim
+fi
+
 # Terminator
 if ! command -v terminator &> /dev/null; then
   sudo apt update
