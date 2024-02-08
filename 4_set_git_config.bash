@@ -16,11 +16,10 @@
 
 # Software install
 APT_INSTALL=0
-command -v git  > /dev/null 2>&1 || APT_INSTALL=1
 command -v xsel > /dev/null 2>&1 || APT_INSTALL=1
 if [ $APT_INSTALL -eq 1 ]; then
   sudo apt update
-  sudo apt install git xsel -y
+  sudo apt install xsel -y
 fi
 
 # set user.name and user.email
