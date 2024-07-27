@@ -44,6 +44,7 @@ fi
 source $bashrc_path
 
 # mozc settings
+sudo apt install mozc-utils-gui
 while true; do
   read -p "Do you import Mozc Property? (y:Yes/n:No): " yn
   case "$yn" in
