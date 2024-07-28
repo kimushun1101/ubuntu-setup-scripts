@@ -47,8 +47,8 @@ done
 
 # generate ssh key
 if [ ! -e ~/.ssh/id_ed25519 ]; then
-  cd ~/.ssh
-  ssh-keygen -t ed25519
+  ssh-keygen -t ed25519 -C "$USER_EMAIL" -f $HOME/.ssh/id_ed25519
+  ssh-add ~/.ssh/id_ed25519
 fi
 
 while true; do
@@ -59,12 +59,10 @@ while true; do
     echo "Check your ssh key settings."
     echo "Open the GitHub SSH settings."
     xdg-open https://github.com/settings/ssh > /dev/null 2>&1
-    echo "Copy id_ed25519.pub to your clipboard."
     cat ~/.ssh/id_ed25519.pub | xsel --clipboard --input
+    echo "Copy id_ed25519.pub to your clipboard."
     read -p  "Upload public key, then HIT ENTER:" continue
   fi
 done
 
-git config --global core.editor vim.tiny
-echo -e "\033[32mGit configuration is complete!\033[m"
-
+echo -e "\033[32mGitHub configuration is complete!\033[m"
