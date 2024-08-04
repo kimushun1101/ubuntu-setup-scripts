@@ -8,7 +8,6 @@
   [[default]]
     background_darkness = 0.8
     background_type = transparent
-    cursor_color = "#aaaaaa"
     font = Monospace 13
     show_titlebar = False
     use_system_font = False
@@ -21,7 +20,6 @@
       position = 0:0
       maximised = True
       fullscreen = False
-      size = 1846, 1016
       title = terminator
       last_active_term = bbd34449-e467-4c75-9e89-8e11699603f7
       last_active_window = True
@@ -29,8 +27,6 @@
       type = HPaned
       parent = child0
       order = 0
-      position = 921
-      ratio = 0.5002715915263444
     [[[terminal2]]]
       type = Terminal
       parent = child1
@@ -41,8 +37,6 @@
       type = VPaned
       parent = child1
       order = 1
-      position = 506
-      ratio = 0.5004945598417408
     [[[terminal4]]]
       type = Terminal
       parent = child3
