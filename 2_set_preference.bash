@@ -16,14 +16,28 @@
 
 cd `dirname $0`
 
-# home directory in English
-LANG=C xdg-user-dirs-gtk-update
-
 # config files
 mkdir -p ~/.vimbackup ~/.config/nvim
-ln -sf $(pwd)/config/vimrc.vim ~/.vimrc
-ln -sf $(pwd)/config/vimrc.vim ~/.config/nvim/init.vim
+ln -sf $(pwd)/config/.vimrc ~/.vimrc
 ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
+
+while true; do
+  read -p "Is this desktop? (y:Yes/n:No): " yn
+  case "$yn" in
+    [yY]*) break;;
+    [nN]*) echo -e "\033[32mPreference setting is complete!\033[m"; exit 0 ;;
+    *);;
+  esac
+done
+
+for arg in "$@"; do
+  if [[ "$arg" == "nogui" ]]; then
+    exit 0
+  fi
+done
+
+# home directory in English
+LANG=C xdg-user-dirs-gtk-update
 
 # time setting
 gsettings set org.gnome.desktop.interface clock-show-date true
@@ -45,7 +59,7 @@ fi
 source $bashrc_path
 
 # mozc settings
-sudo apt install mozc-utils-gui
+sudo apt install mozc-utils-gui -y
 while true; do
   read -p "Do you import Mozc Property? (y:Yes/n:No): " yn
   case "$yn" in
