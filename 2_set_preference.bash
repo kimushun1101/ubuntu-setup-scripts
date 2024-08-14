@@ -20,8 +20,9 @@ cd `dirname $0`
 LANG=C xdg-user-dirs-gtk-update
 
 # config files
-mkdir -p ~/.vimbackup
-ln -sf $(pwd)/config/vimrc ~/.vimrc
+mkdir -p ~/.vimbackup ~/.config/nvim
+ln -sf $(pwd)/config/vimrc.vim ~/.vimrc
+ln -sf $(pwd)/config/vimrc.vim ~/.config/nvim/init.vim
 ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
 
 # time setting
