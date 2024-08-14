@@ -1,4 +1,5 @@
 # Docker
+echo -e "\033[32mDocker will be installed.\033[m"
 if ! command -v curl &> /dev/null; then
 sudo apt update
 sudo apt install -y curl
