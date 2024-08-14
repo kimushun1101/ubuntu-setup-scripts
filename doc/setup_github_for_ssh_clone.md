@@ -16,7 +16,7 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub | xsel --clipboard --input
 echo "Copy id_ed25519.pub to your clipboard."
 xdg-open https://github.com/settings/ssh > /dev/null 2>&1
-read -p  "Upload public key, then HIT ENTER:" continue
+read -p "Upload public key, then HIT ENTER:" continue
 ssh -T git@github.com
 
 git clone git@github.com:kimushun1101/ubuntu-setup-scripts.git ~/.ubuntu-setup-scripts
