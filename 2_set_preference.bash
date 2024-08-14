@@ -17,7 +17,7 @@
 cd `dirname $0`
 
 # config files
-mkdir -p ~/.vimbackup ~/.config/nvim
+mkdir -p ~/.vimbackup
 ln -sf $(pwd)/config/.vimrc ~/.vimrc
 ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
 
@@ -28,12 +28,6 @@ while true; do
     [nN]*) echo -e "\033[32mPreference setting is complete!\033[m"; exit 0 ;;
     *);;
   esac
-done
-
-for arg in "$@"; do
-  if [[ "$arg" == "nogui" ]]; then
-    exit 0
-  fi
 done
 
 # home directory in English
