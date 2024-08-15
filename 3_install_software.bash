@@ -21,16 +21,30 @@ software_list=(\
 "docker" \
 # "google-chrome-stable" \
 "terminator" \
-# "ulauncher" \
+"ulauncher" \
 )
+
+echo -e "\e[33mThe following software will be installed.\e[0m"
+for software in "${software_list[@]}"; do
+  echo -e "\033[33m$software\033[m"
+done
+
+while true; do
+  read -p "Do you install them? (y:Yes/n:No): " yn
+  case "$yn" in
+    [yY]*) break;;
+    [nN]*) echo -e "\033[31mInstallation has been canceled.\033[m"; exit 0 ;;
+    *);;
+  esac
+done
 
 sudo apt update
 
 for software in "${software_list[@]}"; do
   if ! command -v $software &> /dev/null; then
-    bash "./$software/install.bash"
+    bash "./software/$software/install.bash"
   else
-    echo "$software is already installed"
+    echo -e "\033[33m$software is already installed.\033[m"
   fi
 done
 

@@ -1,4 +1,4 @@
-[日本語](/README.md) | [English](/README_en.md)
+[日本語](/README.md) | [English](/README_en.md) | [For me](/doc/setup_github_for_ssh_clone.md)
 
 # Ubuntu-Desktop setup scripts
 
