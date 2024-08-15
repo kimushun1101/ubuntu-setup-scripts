@@ -1,4 +1,4 @@
-# Docker
+#!/bin/bash -eu
 echo -e "\033[32mInstall : Docker CLI\033[m"
 if ! command -v curl &> /dev/null; then
   sudo apt install -y curl

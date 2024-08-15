@@ -1,3 +1,4 @@
+#!/bin/bash -eu
 echo -e "\033[32mInstall : Ulauncher\033[m"
 sudo add-apt-repository universe -y
 sudo add-apt-repository ppa:agornostal/ulauncher -y

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 # Copyright 2023 Shunsuke Kimura
 
@@ -26,7 +26,7 @@ software_list=(\
 
 echo -e "\e[33mThe following software will be installed.\e[0m"
 for software in "${software_list[@]}"; do
-  echo -e "\033[33m$software\033[m"
+  echo -e "- \033[33m$software\033[m"
 done
 
 while true; do
