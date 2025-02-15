@@ -21,6 +21,7 @@ software_list=(\
 "docker" \
 # "google-chrome-stable" \
 "terminator" \
+"tmux" \
 "ulauncher" \
 )
 
