@@ -5,5 +5,5 @@ cd_and_ls ()
 alias cd="cd_and_ls"
 alias x="exit"
 alias open="xdg-open"
-alias vi="vim.tiny"
+alias vi="vim"
 alias mozc="/usr/lib/mozc/mozc_tool --mode=config_dialog"

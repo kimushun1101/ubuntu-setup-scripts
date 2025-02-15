@@ -17,9 +17,16 @@
 cd `dirname $0`
 
 # config files
+sudo apt install -y vim
 mkdir -p ~/.vimbackup
 ln -sf $(pwd)/config/.vimrc ~/.vimrc
 ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
+
+# home directory in English
+LANG=C xdg-user-dirs-update --force
+
+# time setting for dual boot
+timedatectl set-local-rtc true
 
 while true; do
   read -p "Is this desktop? (y:Yes/n:No): " yn
@@ -30,14 +37,10 @@ while true; do
   esac
 done
 
-# home directory in English
-LANG=C xdg-user-dirs-gtk-update
-
 # time setting
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 # gsettings set org.gnome.desktop.interface clock-show-seconds true
-timedatectl set-local-rtc true
 
 # keyboard settings
 gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"

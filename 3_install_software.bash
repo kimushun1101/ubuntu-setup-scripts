@@ -21,9 +21,9 @@ software_list=(\
 "docker" \
 # "google-chrome" \
 "brave-browser" \
-"terminator" \
+# "terminator" \
 "tmux" \
-"ulauncher" \
+# "ulauncher" \
 )
 
 echo -e "\e[33mThe following software will be installed.\e[0m"
