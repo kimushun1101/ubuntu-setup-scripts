@@ -19,7 +19,8 @@ cd `dirname $0`
 software_list=(\
 "code" \
 "docker" \
-# "google-chrome-stable" \
+# "google-chrome" \
+"brave-browser" \
 "terminator" \
 "tmux" \
 "ulauncher" \
