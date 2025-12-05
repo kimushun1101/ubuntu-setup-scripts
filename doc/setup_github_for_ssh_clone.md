@@ -28,3 +28,8 @@ ssh -T git@github.com
 ```
 git clone git@github.com:kimushun1101/ubuntu-setup-scripts.git ~/.ubuntu-setup-scripts
 ```
+
+WSLのSSHキーをWindowsにコピーするスクリプト
+```
+~/.ubuntu-setup-scripts/6_copy_ssh_to_windows.bash
+```
