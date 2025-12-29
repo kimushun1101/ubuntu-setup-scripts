@@ -10,6 +10,7 @@ sudo apt install git xsel -y
 git config --global user.name "Shunsuke Kimura"
 git config --global user.email "kimushun1101@gmail.com"
 git config --global core.editor vim.tiny
+git config --global core.autocrlf input
 
 ssh-keygen -t ed25519 -C "kimushun1101@gmail.com" -f $HOME/.ssh/id_ed25519
 ssh-add ~/.ssh/id_ed25519
