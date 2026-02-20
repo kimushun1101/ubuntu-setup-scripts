@@ -13,7 +13,6 @@ git config --global core.editor vim.tiny
 git config --global core.autocrlf input
 
 ssh-keygen -t ed25519 -C "kimushun1101@gmail.com" -f $HOME/.ssh/id_ed25519
-ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub | xsel --clipboard --input
 echo "Copy id_ed25519.pub to your clipboard."
 ```
@@ -23,6 +22,20 @@ https://github.com/settings/ssh ここにアクセスしてSSHキーを登録。
 接続確認
 ```
 ssh -T git@github.com
+```
+
+パスワードをかけている場合には、ssh-agentを立ち上げておく
+```
+cat << 'EOF' >> ~/.bashrc
+
+# --- ssh-agent ---
+# 既存のagentがなければ起動し、鍵を登録する
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)" > /dev/null
+  ssh-add ~/.ssh/id_ed25519 2>/dev/null
+fi
+EOF
+source ~/.bashrc
 ```
 
 このスクリプトをクローン
