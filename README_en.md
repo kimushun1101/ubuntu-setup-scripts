@@ -58,12 +58,12 @@ Preference scripts invoked per environment:
 
 Software is called per package from each `1*_run_*.bash` via `software/<name>/install.bash`. Defaults:
 
-| env | uv | claude-code | codex | code | docker | tmux | brave-browser |
-|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Desktop   | ● | ● | ● | ● | ● | ● | ● |
-| Server    | ● | ● | ● |   | ● | ● |   |
-| WSL2      | ● | ● | ● |   | ● | ● |   |
-| Container | ● | ● | ● |   | ● | ● |   |
+| env | uv | gh | claude-code | codex | code | docker | tmux | brave-browser |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Desktop   | ● | ● | ● | ● | ● | ● | ● | ● |
+| Server    | ● | ● | ● | ● |   | ● | ● |   |
+| WSL2      | ● | ● | ● | ● |   | ● | ● |   |
+| Container | ● | ● | ● | ● |   | ● | ● |   |
 
 `google-chrome-stable` / `terminator` / `ulauncher` are kept commented-out in Desktop entry (enable if needed). VS Code is not pre-installed on Server/WSL/Container; Remote-SSH / Dev Containers auto-install `~/.vscode-server`.
 
@@ -113,6 +113,7 @@ Copies WSL2 SSH key to `%USERPROFILE%\.ssh` on the Windows side. Invoked from `1
 Per-software install scripts.
 
 - `uv/` — Python package manager (`curl https://astral.sh/uv/install.sh`)
+- `gh/` — GitHub CLI (via official apt repository)
 - `claude-code/` — Claude Code CLI
 - `codex/` — OpenAI Codex CLI (requires Node.js / npm)
 - `code/` — VS Code Desktop

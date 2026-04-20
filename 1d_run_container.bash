@@ -27,6 +27,7 @@ sudo apt update
 
 # Software
 ./software/uv/install.bash
+./software/gh/install.bash
 ./software/claude-code/install.bash
 ./software/codex/install.bash
 ./software/docker/install.bash
