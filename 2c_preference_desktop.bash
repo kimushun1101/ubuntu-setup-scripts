@@ -14,28 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# GNOME / X11 依存の設定: 時計表示・キーボード設定（Caps→Ctrl、xkb keymap）
+# X11/GNOME が無い環境（CLI/headless/コンテナ）では実行しないこと
+
 cd `dirname $0`
-
-# config files
-sudo apt install -y vim
-mkdir -p ~/.vimbackup
-ln -sf $(pwd)/config/.vimrc ~/.vimrc
-ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
-
-# home directory in English
-LANG=C xdg-user-dirs-update --force
-
-# time setting for dual boot
-timedatectl set-local-rtc true
-
-while true; do
-  read -p "Is this desktop? (y:Yes/n:No): " yn
-  case "$yn" in
-    [yY]*) break;;
-    [nN]*) echo -e "\033[32mPreference setting is complete!\033[m"; exit 0 ;;
-    *);;
-  esac
-done
 
 # time setting
 gsettings set org.gnome.desktop.interface clock-show-date true
@@ -55,20 +37,4 @@ if ! grep -q "$xkb_command" "$bashrc_path"; then
 fi
 source $bashrc_path
 
-# mozc settings
-sudo apt install mozc-utils-gui -y
-while true; do
-  read -p "Do you import Mozc Property? (y:Yes/n:No): " yn
-  case "$yn" in
-    [yY]*)
-      echo "キー設定の選択 → 編集... → 編集 → インポート... → keymap_for_mozc.txt(一時的にホームディレクトリにコピーされています)"
-      ln -sf $(pwd)/config/keymap_for_mozc.txt ~/keymap_for_mozc.txt
-      /usr/lib/mozc/mozc_tool --mode=config_dialog
-      rm -f ~/keymap_for_mozc.txt
-      break;;
-    [nN]*) echo "Mozc setting was skipped."; break ;;
-    *);;
-  esac
-done
-
-echo -e "\033[32mPreference setting is complete!\033[m"
+echo -e "\033[32mDesktop preference setting is complete!\033[m"

@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-# Copyright 2023 Shunsuke Kimura
+# Copyright 2025 Shunsuke Kimura
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cd `dirname $0`
+# One-shot installer for WSL2:
+#   curl -fsSL https://raw.githubusercontent.com/kimushun1101/ubuntu-setup-scripts/main/install/wsl.bash | bash
 
-./2_set_preference.bash
-./3_install_software.bash
-./4_set_github_config.bash
-
-echo -e "\033[32mAll scripts have been completed!\033[m"
+sudo apt update
+sudo apt install -y git
+REPO="$HOME/.ubuntu-setup-scripts"
+if [ ! -d "$REPO" ]; then
+  git clone https://github.com/kimushun1101/ubuntu-setup-scripts.git "$REPO"
+else
+  echo "$REPO already exists. Skipping clone."
+fi
+cd "$REPO"
+./1c_run_wsl.bash
