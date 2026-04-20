@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-# Copyright 2023 Shunsuke Kimura
+# Copyright 2025 Shunsuke Kimura
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# WSL2 用セットアップ（最小、CLI 中心）
+# GUI 関連は含めない。SSH 鍵を Windows 側にコピーするステップを含む
+
 cd `dirname $0`
 
-./2_set_preference.bash
-./3_install_software.bash
-./4_set_github_config.bash
+sudo apt update
 
-echo -e "\033[32mAll scripts have been completed!\033[m"
+# Preference
+./2a_preference_common.bash
+
+# Software
+./software/uv/install.bash
+./software/claude-code/install.bash
+./software/codex/install.bash
+./software/docker/install.bash
+./software/tmux/install.bash
+
+# Copy SSH key to Windows side
+./6_copy_ssh_to_windows.bash
+
+echo -e "\033[32mWSL setup is complete!\033[m"

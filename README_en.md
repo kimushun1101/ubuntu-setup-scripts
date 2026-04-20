@@ -1,41 +1,124 @@
 [日本語](/README.md) | [English](/README_en.md)
 
-# Ubuntu-Desktop setup scripts
+# Ubuntu setup scripts
 
-Setup scripts for Ubuntu-Desktop.
+Setup scripts for Ubuntu (Desktop / Server / WSL2 / Container).
+
+## Quick install (curl | bash)
+
+### Desktop (native Ubuntu)
+
+```
+curl -fsSL https://raw.githubusercontent.com/kimushun1101/ubuntu-setup-scripts/main/install/desktop.bash | bash
+```
+
+### Server (CLI / headless)
+
+```
+curl -fsSL https://raw.githubusercontent.com/kimushun1101/ubuntu-setup-scripts/main/install/server.bash | bash
+```
+
+### WSL2
+
+```
+curl -fsSL https://raw.githubusercontent.com/kimushun1101/ubuntu-setup-scripts/main/install/wsl.bash | bash
+```
+
+### Container (podman / docker container)
+
+```
+curl -fsSL https://raw.githubusercontent.com/kimushun1101/ubuntu-setup-scripts/main/install/container.bash | bash
+```
+
+If you want to review the script before running, open the file in [install/](/install/) in the browser and copy-paste.
+
+## Manual install
+
+```
+sudo apt install git
+git clone https://github.com/kimushun1101/ubuntu-setup-scripts.git ~/.ubuntu-setup-scripts
+cd ~/.ubuntu-setup-scripts
+# Pick one:
+# ./1a_run_desktop.bash
+# ./1b_run_server.bash
+# ./1c_run_wsl.bash
+# ./1d_run_container.bash
+```
+
+## Environment matrix
+
+Preference scripts invoked per environment:
+
+| env | entry | 2a common | 2b systemd | 2c desktop | 2d mozc | 6 ssh→win |
+|---|---|:-:|:-:|:-:|:-:|:-:|
+| Desktop   | 1a | ● | ● | ● | ● |   |
+| Server    | 1b | ● |   |   |   |   |
+| WSL2      | 1c | ● |   |   |   | ● |
+| Container | 1d | ● |   |   | ● |   |
+
+Software is called per package from each `1*_run_*.bash` via `software/<name>/install.bash`. Defaults:
+
+| env | uv | claude-code | codex | code | docker | tmux | brave-browser |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Desktop   | ● | ● | ● | ● | ● | ● | ● |
+| Server    | ● | ● | ● |   | ● | ● |   |
+| WSL2      | ● | ● | ● |   | ● | ● |   |
+| Container | ● | ● | ● |   | ● | ● |   |
+
+`google-chrome-stable` / `terminator` / `ulauncher` are kept commented-out in Desktop entry (enable if needed). VS Code is not pre-installed on Server/WSL/Container; Remote-SSH / Dev Containers auto-install `~/.vscode-server`.
 
 ## Contents
 
-### 1_run_all_scripts.bash
+### 1a_run_desktop.bash / 1b_run_server.bash / 1c_run_wsl.bash / 1d_run_container.bash
 
-This script runs all of the following scripts except for 5_delete_preference.bash.
+Environment-specific entry points. Runs `sudo apt update` → preference scripts → software installs.
 
-### 2_set_preference.bash
+### 2a_preference_common.bash
 
-This script set the following preferences.
-- Folder names is in English.
-- Make a vimbackup directory.
-- Make symbolic links from files in config directory.
-- Shows date and weekday on the clock.
-- Set the clock when dual booting with Windows.
-- Caps Lock Key becomes Ctrl key.
-- xkb enables hjkl cursor movement with Muhenkan-key as a hotkey.
-- Change keymap in Mozc that switch the input type by Henkan or Muhenkan key.
+- Install vim
+- Symlinks to `config/.vimrc` and `config/bash_aliases`
+- Home directory names in English
 
-### 3_install_software.bash
+### 2b_preference_systemd.bash
 
-This script installs GNOME Terminator, Google Chrome, VS Code, and Docker.
+- `timedatectl set-local-rtc true` (to align clock when dual-booting with Windows)
 
-### 4_set_github_config.bash
+Skip on environments without systemd (containers, systemd-less WSL).
 
-This script prepares you to use Git and GitHub.
-- Install Git.
-- set Git global config.
-- Generate SSH key with ed25519.
-- Navigate to GitHub SSH setting page for key registration.
-- Confirm connection to GitHub.
+### 2c_preference_desktop.bash
+
+- Show date and weekday on the clock (gsettings)
+- Caps Lock → Ctrl (gsettings)
+- xkb keymap (Muhenkan + hjkl cursor movement)
+
+Requires X11/GNOME. Skip on CLI/headless.
+
+### 2d_preference_mozc.bash
+
+- Install `mozc-utils-gui`
+- Open Mozc property dialog interactively
+
+Requires DISPLAY.
 
 ### 5_delete_preference.bash
 
-This script delete the file made by 2_set_preference.bash.
-If you wish to reconfigure, rerun 2_set_preference.bash.
+Removes symlinks and settings created by 2a-d. Rerun the corresponding script to reconfigure.
+
+### 6_copy_ssh_to_windows.bash
+
+Copies WSL2 SSH key to `%USERPROFILE%\.ssh` on the Windows side. Invoked from `1c_run_wsl.bash` automatically.
+
+### software/\<name\>/install.bash
+
+Per-software install scripts.
+
+- `uv/` — Python package manager (`curl https://astral.sh/uv/install.sh`)
+- `claude-code/` — Claude Code CLI
+- `codex/` — OpenAI Codex CLI (requires Node.js / npm)
+- `code/` — VS Code Desktop
+- `docker/` — Docker Engine
+- `tmux/`
+- `brave-browser/`
+- `google-chrome-stable/`
+- `terminator/`
+- `ulauncher/`
