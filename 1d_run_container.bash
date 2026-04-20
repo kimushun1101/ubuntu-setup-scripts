@@ -32,5 +32,6 @@ sudo apt update
 ./software/codex/install.bash
 ./software/docker/install.bash
 ./software/tmux/install.bash
+./software/hackgen/install.bash
 
 echo -e "\033[32mContainer setup is complete!\033[m"

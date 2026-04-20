@@ -58,12 +58,12 @@ Preference scripts invoked per environment:
 
 Software is called per package from each `1*_run_*.bash` via `software/<name>/install.bash`. Defaults:
 
-| env | uv | gh | claude-code | codex | code | docker | tmux | brave-browser |
-|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Desktop   | ● | ● | ● | ● | ● | ● | ● | ● |
-| Server    | ● | ● | ● | ● |   | ● | ● |   |
-| WSL2      | ● | ● | ● | ● |   | ● | ● |   |
-| Container | ● | ● | ● | ● |   | ● | ● |   |
+| env | uv | gh | claude-code | codex | code | docker | tmux | brave-browser | hackgen |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Desktop   | ● | ● | ● | ● | ● | ● | ● | ● | ● |
+| Server    | ● | ● | ● | ● |   | ● | ● |   |   |
+| WSL2      | ● | ● | ● | ● |   | ● | ● |   |   |
+| Container | ● | ● | ● | ● |   | ● | ● |   | ● |
 
 `google-chrome-stable` / `terminator` / `ulauncher` are kept commented-out in Desktop entry (enable if needed). VS Code is not pre-installed on Server/WSL/Container; Remote-SSH / Dev Containers auto-install `~/.vscode-server`.
 
@@ -123,3 +123,4 @@ Per-software install scripts.
 - `google-chrome-stable/`
 - `terminator/`
 - `ulauncher/`
+- `hackgen/` — HackGen NF font (programming-friendly Japanese font, pulled from GitHub Releases)

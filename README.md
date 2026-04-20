@@ -60,12 +60,12 @@ cd ~/.ubuntu-setup-scripts
 
 Software は `software/<name>/install.bash` を各 `1*_run_*.bash` から個別に呼ぶ。デフォルト構成:
 
-| 環境 | uv | gh | claude-code | codex | code | docker | tmux | brave-browser |
-|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Desktop   | ● | ● | ● | ● | ● | ● | ● | ● |
-| Server    | ● | ● | ● | ● |   | ● | ● |   |
-| WSL2      | ● | ● | ● | ● |   | ● | ● |   |
-| Container | ● | ● | ● | ● |   | ● | ● |   |
+| 環境 | uv | gh | claude-code | codex | code | docker | tmux | brave-browser | hackgen |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Desktop   | ● | ● | ● | ● | ● | ● | ● | ● | ● |
+| Server    | ● | ● | ● | ● |   | ● | ● |   |   |
+| WSL2      | ● | ● | ● | ● |   | ● | ● |   |   |
+| Container | ● | ● | ● | ● |   | ● | ● |   | ● |
 
 `google-chrome-stable` / `terminator` / `ulauncher` は Desktop のみ用意（コメントアウト、必要に応じて有効化）。VS Code の Server/WSL/Container への事前インストールは不要（Remote-SSH / Dev Containers で `~/.vscode-server` が自動配置されるため）。
 
@@ -125,3 +125,4 @@ WSL2 側の SSH 鍵を Windows 側の `%USERPROFILE%\.ssh` にコピーする。
 - `google-chrome-stable/`
 - `terminator/`
 - `ulauncher/`
+- `hackgen/` — プログラミング向け日本語フォント HackGen NF（GitHub Releases から最新版）
