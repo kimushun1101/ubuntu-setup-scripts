@@ -1,0 +1,80 @@
+name: Check official install drift
+
+on:
+  schedule:
+    # 毎月 1 日 00:00 UTC (日本時間 09:00) に実行
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run check script
+        id: check
+        run: ./scripts/check_official_install.sh | tee check.log
+        continue-on-error: true
+
+      - name: Open issue on drift (no duplicate)
+        if: steps.check.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const log = fs.readFileSync('check.log', 'utf8');
+            const title = '公式 installer の drift 検知';
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100,
+            });
+
+            const existing = issues.find(i => i.title.startsWith(title));
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const today = new Date().toISOString().slice(0, 10);
+            const body = [
+              `\`scripts/check_official_install.sh\` が drift を検出しました (${today})。`,
+              '',
+              '```',
+              log,
+              '```',
+              '',
+              `Workflow run: ${runUrl}`,
+              '',
+              '## 対応手順',
+              '1. ログで drift 対象を確認',
+              '2. 該当する `software/<name>/install.bash` の挙動を upstream の最新手順と比較',
+              '3. 必要なら install.bash を更新',
+              '4. `./scripts/check_official_install.sh --update` で snapshot を更新',
+              '5. PR 作成',
+            ].join('\n');
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: `## 再検知 (${today})\n\n\`\`\`\n${log}\n\`\`\`\n\nWorkflow run: ${runUrl}`,
+              });
+              core.notice(`Updated existing drift issue #${existing.number}`);
+            } else {
+              const { data: created } = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `${title} (${today})`,
+                body,
+              });
+              core.notice(`Created drift issue #${created.number}`);
+            }
+
+      - name: Fail job if drift detected
+        if: steps.check.outcome == 'failure'
+        run: exit 1

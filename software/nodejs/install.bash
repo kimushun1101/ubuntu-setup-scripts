@@ -7,7 +7,7 @@
 
 echo -e "\033[32mInstall : Node.js LTS (via nvm)\033[m"
 
-NVM_VERSION="v0.40.1"
+NVM_VERSION="v0.40.4"
 export NVM_DIR="$HOME/.nvm"
 
 if ! command -v curl &> /dev/null; then

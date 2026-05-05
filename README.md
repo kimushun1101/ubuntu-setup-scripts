@@ -91,6 +91,21 @@ VS Code の Server/WSL/Container への事前インストールは不要（Remot
 
 各 entry を Docker 内で動作確認できる（multi-stage Dockerfile, `--target server` / `--target desktop`）。手順は [doc/setup_docker_for_test.md](doc/setup_docker_for_test.md) を参照。
 
+## 公式 installer の drift 検知
+
+各 `software/<name>/install.bash` が依存している upstream installer / pinned version に変化があるかを定期的に検査する仕組みを `.github/workflows/check-official-install.yml` で運用している（毎月 1 日に cron 実行 + 手動 `workflow_dispatch` 可）。
+
+検知対象 (PoC): `uv` / `claude-code` / `brave-browser` / `docker` / `ghostty` の installer 本文 sha256、および `nodejs` の nvm pinned version。詳細は [scripts/check_official_install.sh](scripts/check_official_install.sh) を参照。
+
+ローカル実行:
+
+```
+./scripts/check_official_install.sh           # check (drift があれば exit 1)
+./scripts/check_official_install.sh --update  # 現在値で snapshot を上書き
+```
+
+drift が検知されると CI が同タイトルの open issue を再利用 (またはなければ新規起票) してコメントを残す。
+
 ## Contents
 
 ### 1a_run_desktop.bash / 1b_run_server.bash / 1c_run_wsl.bash / 1d_run_container.bash
