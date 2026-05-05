@@ -16,20 +16,33 @@
 
 # CLI 環境（Ubuntu Server / headless ネイティブ機）用セットアップ
 # GUI・systemd-ベースのデュアルブート設定は含まない
+# 全項目を対話選択 (ASSUME_YES=1 で全 default 採用)
 
 cd `dirname $0`
 
-sudo apt update
+source ./software/_prompt_lib.bash
+
+echo
+echo "=== セットアップ項目選択 (Enter でデフォルト) ==="
 
 # Preference
-./2a_preference_common.bash
+ask_step 2a-common ./2a_preference_common.bash y "vim/.bashrc/xdg ホーム英語化"
 
 # Software
-./software/uv/install.bash
-./software/gh/install.bash
-./software/claude-code/install.bash
-./software/codex/install.bash
-./software/docker/install.bash
-./software/tmux/install.bash
+ask_pkg uv          y "Python パッケージマネージャ"
+ask_pkg gh          y "GitHub CLI"
+ask_pkg claude-code y
+ask_pkg codex       y "OpenAI Codex CLI"
+ask_pkg docker      y
+ask_pkg tmux        y
 
-echo -e "\033[32mServer setup is complete!\033[m"
+confirm_or_abort
+
+sudo apt update
+
+if run_all; then
+  echo -e "\033[32mServer setup is complete!\033[m"
+else
+  echo -e "\033[33mServer setup finished with some failures. See above.\033[m"
+  exit 1
+fi
