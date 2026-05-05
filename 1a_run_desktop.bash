@@ -34,6 +34,7 @@ ask_step 2d-mozc    ./2d_preference_mozc.bash    y "Mozc IME 設定"
 ask_pkg uv          y "Python パッケージマネージャ"
 ask_pkg gh          y "GitHub CLI"
 ask_pkg claude-code y
+ask_pkg nodejs      y "Node.js LTS (via nvm)"
 ask_pkg codex       y "OpenAI Codex CLI"
 ask_pkg code        y "VS Code"
 ask_pkg docker      y

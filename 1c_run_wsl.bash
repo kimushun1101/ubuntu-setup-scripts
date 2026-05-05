@@ -32,6 +32,7 @@ ask_step 2a-common ./2a_preference_common.bash y "vim/.bashrc/xdg ホーム英�
 ask_pkg uv          y "Python パッケージマネージャ"
 ask_pkg gh          y "GitHub CLI"
 ask_pkg claude-code y
+ask_pkg nodejs      y "Node.js LTS (via nvm)"
 ask_pkg codex       y "OpenAI Codex CLI"
 ask_pkg docker      y
 ask_pkg tmux        y
