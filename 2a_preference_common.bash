@@ -24,6 +24,9 @@ mkdir -p ~/.vimbackup
 ln -sf $(pwd)/config/.vimrc ~/.vimrc
 ln -sf $(pwd)/config/bash_aliases ~/.bash_aliases
 
+# enable colored bash prompt
+sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' ~/.bashrc
+
 # home directory in English
 LANG=C xdg-user-dirs-update --force
 
