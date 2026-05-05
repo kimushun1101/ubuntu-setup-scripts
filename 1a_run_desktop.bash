@@ -37,6 +37,7 @@ sudo apt update
 ./software/tmux/install.bash
 ./software/brave-browser/install.bash
 ./software/hackgen/install.bash
+# ./software/ghostty/install.bash
 # ./software/google-chrome-stable/install.bash
 # ./software/terminator/install.bash
 # ./software/ulauncher/install.bash
