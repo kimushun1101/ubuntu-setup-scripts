@@ -34,6 +34,12 @@ curl -fsSL https://raw.githubusercontent.com/kimushun1101/ubuntu-setup-scripts/m
 
 中身を確認してから実行したい場合は、[install/](/install/) のファイルをブラウザで開いてコピペ実行すればよい。
 
+各 preference / software の実行可否は y/n で対話的に選択できる。質問はまとめて聞かれ、確認画面の後にまとめて実行される。完全自動で進めたい場合は `ASSUME_YES=1` を付ける（全項目で各環境のデフォルトを採用）:
+
+```
+ASSUME_YES=1 ./1a_run_desktop.bash
+```
+
 ## Manual install
 
 ```
@@ -49,25 +55,35 @@ cd ~/.ubuntu-setup-scripts
 
 ## Environment matrix
 
-各エントリーポイントが呼ぶ preference / software の対応:
+各エントリーポイントが呼ぶ preference / software の対応（Y = デフォルト Y で対話質問、N = デフォルト N で対話質問、空欄 = 質問されない）。
 
-| 環境 | entry | 2a common | 2b systemd | 2c desktop | 2d mozc | 6 ssh→win |
+Preference:
+
+| 環境 | entry | 2a-common | 2b-systemd | 2c-desktop | 2d-mozc | 6 ssh→win |
 |---|---|:-:|:-:|:-:|:-:|:-:|
-| Desktop   | 1a | ● | ● | ● | ● |   |
-| Server    | 1b | ● |   |   |   |   |
-| WSL2      | 1c | ● |   |   |   | ● |
-| Container | 1d | ● |   |   | ● |   |
+| Desktop   | 1a | Y | Y | Y | Y |   |
+| Server    | 1b | Y |   |   |   |   |
+| WSL2      | 1c | Y |   |   |   | ● |
+| Container | 1d | Y |   |   | Y |   |
 
-Software は `software/<name>/install.bash` を各 `1*_run_*.bash` から個別に呼ぶ。デフォルト構成:
+`6 ssh→win` の `●` は WSL のみ常時実行（対話なし）。
 
-| 環境 | uv | gh | claude-code | codex | code | docker | tmux | brave-browser | hackgen |
-|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Desktop   | ● | ● | ● | ● | ● | ● | ● | ● | ● |
-| Server    | ● | ● | ● | ● |   | ● | ● |   |   |
-| WSL2      | ● | ● | ● | ● |   | ● | ● |   |   |
-| Container | ● | ● | ● | ● |   | ● | ● |   | ● |
+Software は `software/<name>/install.bash` を各 `1*_run_*.bash` から個別に呼ぶ。各環境で対話質問される候補:
 
-`ghostty` / `google-chrome-stable` / `terminator` / `ulauncher` は Desktop のみ用意（コメントアウト、必要に応じて有効化）。VS Code の Server/WSL/Container への事前インストールは不要（Remote-SSH / Dev Containers で `~/.vscode-server` が自動配置されるため）。
+| 環境 | uv | gh | claude-code | codex | code | docker | tmux | brave-browser | ghostty | hackgen | google-chrome | terminator | ulauncher |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Desktop   | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y\* | Y\* | N |
+| Server    | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
+| WSL2      | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
+| Container | Y | Y | Y | Y |   | Y | Y |   |   | Y |     |     |   |
+
+\* `google-chrome-stable` は `brave-browser` を `n` と答えたときのみ質問される（代替ブラウザとして default Y）。同様に `terminator` は `ghostty` を `n` と答えたときのみ質問される（代替ターミナル）。
+
+VS Code の Server/WSL/Container への事前インストールは不要（Remote-SSH / Dev Containers で `~/.vscode-server` が自動配置されるため）。
+
+### 失敗時の挙動
+
+個別の preference / software スクリプトがエラーで終了しても、残りの項目は続行される（ベストエフォート）。最後に失敗した項目名が赤字でレポートされ、entry スクリプトは exit 1 で終了する。
 
 ## Contents
 

@@ -5,7 +5,6 @@ echo -e "\033[32mInstall : HackGen NF font\033[m"
 
 for cmd in curl unzip fc-cache; do
   if ! command -v $cmd &> /dev/null; then
-    sudo apt update
     sudo apt install -y curl unzip fontconfig
     break
   fi

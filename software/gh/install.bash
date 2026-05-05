@@ -3,7 +3,6 @@
 echo -e "\033[32mInstall : GitHub CLI (gh)\033[m"
 
 if ! command -v wget &> /dev/null; then
-  sudo apt update
   sudo apt install -y wget
 fi
 
