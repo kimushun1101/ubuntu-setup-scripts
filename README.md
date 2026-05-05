@@ -85,6 +85,10 @@ VS Code の Server/WSL/Container への事前インストールは不要（Remot
 
 個別の preference / software スクリプトがエラーで終了しても、残りの項目は続行される（ベストエフォート）。最後に失敗した項目名が赤字でレポートされ、entry スクリプトは exit 1 で終了する。
 
+## Docker でテスト
+
+各 entry を Docker 内で動作確認できる（multi-stage Dockerfile, `--target server` / `--target desktop`）。手順は [doc/setup_docker_for_test.md](doc/setup_docker_for_test.md) を参照。
+
 ## Contents
 
 ### 1a_run_desktop.bash / 1b_run_server.bash / 1c_run_wsl.bash / 1d_run_container.bash
