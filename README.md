@@ -70,14 +70,16 @@ Preference:
 
 Software は `software/<name>/install.bash` を各 `1*_run_*.bash` から個別に呼ぶ。各環境で対話質問される候補:
 
-| 環境 | uv | gh | claude-code | codex | code | docker | tmux | brave-browser | ghostty | hackgen | google-chrome | terminator | ulauncher |
-|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Desktop   | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y\* | Y\* | N |
-| Server    | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
-| WSL2      | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
-| Container | Y | Y | Y | Y |   | Y | Y |   |   | Y |     |     |   |
+| 環境 | uv | gh | claude-code | nodejs | codex | code | docker | tmux | brave-browser | ghostty | hackgen | google-chrome | terminator | ulauncher |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Desktop   | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y\* | Y\* | N |
+| Server    | Y | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
+| WSL2      | Y | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
+| Container | Y | Y | Y | Y | Y |   | Y | Y |   |   | Y |     |     |   |
 
 \* `google-chrome-stable` は `brave-browser` を `n` と答えたときのみ質問される（代替ブラウザとして default Y）。同様に `terminator` は `ghostty` を `n` と答えたときのみ質問される（代替ターミナル）。
+
+`nodejs` は `~/.nvm` 配下に Node.js LTS を入れる (`/usr/local` を汚さない)。`codex` (npm install -g) の依存として共通投入。
 
 VS Code の Server/WSL/Container への事前インストールは不要（Remote-SSH / Dev Containers で `~/.vscode-server` が自動配置されるため）。
 
@@ -137,7 +139,8 @@ WSL2 側の SSH 鍵を Windows 側の `%USERPROFILE%\.ssh` にコピーする。
 - `uv/` — Python パッケージマネージャ（`curl https://astral.sh/uv/install.sh`）
 - `gh/` — GitHub CLI（apt 公式リポジトリ経由）
 - `claude-code/` — Claude Code CLI
-- `codex/` — OpenAI Codex CLI（Node.js / npm が必要）
+- `nodejs/` — Node.js LTS（nvm 経由で `~/.nvm` に配置、`/usr/local` 非汚染）
+- `codex/` — OpenAI Codex CLI（`nodejs/` の npm を使う、`npm install -g`）
 - `code/` — VS Code Desktop
 - `docker/` — Docker Engine
 - `tmux/`
