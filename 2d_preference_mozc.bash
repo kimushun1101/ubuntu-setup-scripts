@@ -21,8 +21,9 @@ cd `dirname $0`
 
 # mozc settings
 sudo apt install mozc-utils-gui -y
+# curl | bash 経由だと親 bash の stdin が EOF になっているため、明示的に /dev/tty から読む
 while true; do
-  read -p "Do you import Mozc Property? (y:Yes/n:No): " yn
+  read -p "Do you import Mozc Property? (y:Yes/n:No): " yn </dev/tty
   case "$yn" in
     [yY]*)
       echo "キー設定の選択 → 編集... → 編集 → インポート... → keymap_for_mozc.txt(一時的にホームディレクトリにコピーされています)"
