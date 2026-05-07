@@ -14,6 +14,14 @@ if ! command -v curl &> /dev/null; then
   sudo apt install -y curl
 fi
 
+# nvm は ~/.npmrc の prefix / globalconfig 設定と非互換で、残っていると `nvm use` が非 0 終了し
+# `set -e` で本スクリプトが落ちる。nvm install (DL) より前に検知して案内する。
+if [ -f "$HOME/.npmrc" ] && grep -Eq '^[[:space:]]*(prefix|globalconfig)[[:space:]]*=' "$HOME/.npmrc"; then
+  echo -e "\033[31m~/.npmrc に prefix / globalconfig 設定があり nvm と非互換です。\033[m" >&2
+  echo -e "\033[31m該当行を削除するか、~/.npmrc を退避 (mv ~/.npmrc ~/.npmrc.bak) してから再実行してください。\033[m" >&2
+  exit 1
+fi
+
 if [ ! -s "$NVM_DIR/nvm.sh" ]; then
   curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh" | bash
 fi
