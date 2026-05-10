@@ -38,6 +38,7 @@ ask_pkg codex       y "OpenAI Codex CLI"
 ask_pkg docker      y
 ask_pkg tmux        y
 ask_pkg hackgen     y "HackGen NF フォント"
+ask_pkg biz-ud      y "BIZ UD ゴシック+明朝 (等幅+プロポーショナル)"
 
 confirm_or_abort
 

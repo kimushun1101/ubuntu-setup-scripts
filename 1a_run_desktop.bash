@@ -40,6 +40,7 @@ ask_pkg code        y "VS Code"
 ask_pkg docker      y
 ask_pkg tmux        y
 ask_pkg hackgen     y "HackGen NF フォント"
+ask_pkg biz-ud      y "BIZ UD ゴシック+明朝 (等幅+プロポーショナル)"
 
 ask_pkg brave-browser y "推奨ブラウザ"
 if [ "${_STEP_CHOICE[brave-browser]}" = "n" ]; then
