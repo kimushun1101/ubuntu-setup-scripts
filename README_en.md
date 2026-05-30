@@ -65,7 +65,7 @@ Software is called per package from each `1*_run_*.bash` via `software/<name>/in
 | WSL2      | ● | ● | ● | ● |   | ● | ● |   |   |
 | Container | ● | ● | ● | ● |   | ● | ● |   | ● |
 
-`google-chrome-stable` / `terminator` / `ulauncher` are kept commented-out in Desktop entry (enable if needed). VS Code is not pre-installed on Server/WSL/Container; Remote-SSH / Dev Containers auto-install `~/.vscode-server`.
+`google-chrome-stable` / `terminator` are alternative choices prompted in the Desktop entry (when the primary `brave-browser` / `ghostty` is declined). `muhenkan-switch` (a key-chord shortcut tool, X11-verified) is prompted in `1a` and replaces the former `ulauncher` launcher. VS Code is not pre-installed on Server/WSL/Container; Remote-SSH / Dev Containers auto-install `~/.vscode-server`.
 
 ## Contents
 
@@ -122,5 +122,6 @@ Per-software install scripts.
 - `brave-browser/`
 - `google-chrome-stable/`
 - `terminator/`
-- `ulauncher/`
+- `muhenkan-switch/` — key-chord shortcut tool (official one-liner `scripts/install/get.sh`, X11-verified); prompted in `1a`
+- `ulauncher/` — app launcher (no longer invoked by any `1*_run_*.bash`; kept for manual use after the switch to `muhenkan-switch`)
 - `hackgen/` — HackGen NF font (programming-friendly Japanese font, pulled from GitHub Releases)

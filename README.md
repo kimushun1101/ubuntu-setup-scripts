@@ -70,9 +70,9 @@ Preference:
 
 Software は `software/<name>/install.bash` を各 `1*_run_*.bash` から個別に呼ぶ。各環境で対話質問される候補:
 
-| 環境 | uv | gh | claude-code | nodejs | codex | code | docker | tmux | brave-browser | ghostty | hackgen | google-chrome | terminator | ulauncher |
+| 環境 | uv | gh | claude-code | nodejs | codex | code | docker | tmux | brave-browser | ghostty | hackgen | google-chrome | terminator | muhenkan-switch |
 |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| Desktop   | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y\* | Y\* | N |
+| Desktop   | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y\* | Y\* | Y |
 | Server    | Y | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
 | WSL2      | Y | Y | Y | Y | Y |   | Y | Y |   |   |   |     |     |   |
 | Container | Y | Y | Y | Y | Y |   | Y | Y |   |   | Y |     |     |   |
@@ -162,6 +162,7 @@ WSL2 側の SSH 鍵を Windows 側の `%USERPROFILE%\.ssh` にコピーする。
 - `brave-browser/`
 - `google-chrome-stable/`
 - `terminator/`
-- `ulauncher/`
+- `muhenkan-switch/` — 無変換キー同時押しショートカットツール（公式ワンライナー `scripts/install/get.sh` 経由、X11 検証済み）。Desktop の `1a` で質問される
+- `ulauncher/` — アプリランチャー（現在どの `1*_run_*.bash` からも呼ばれない。`muhenkan-switch` への切替に伴い選択肢から外したが、手動実行用に残置）
 - `ghostty/` — モダンなターミナルエミュレータ（mkasberg/ghostty-ubuntu の install.sh 経由 + `update-alternatives` でデフォルト切替）
 - `hackgen/` — プログラミング向け日本語フォント HackGen NF（GitHub Releases から最新版）

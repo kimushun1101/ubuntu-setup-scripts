@@ -52,7 +52,7 @@ if [ "${_STEP_CHOICE[ghostty]}" = "n" ]; then
   ask_pkg terminator y "代替ターミナル"
 fi
 
-ask_pkg ulauncher n "アプリランチャー"
+ask_pkg muhenkan-switch y "無変換キー同時押しショートカット"
 
 confirm_or_abort
 
